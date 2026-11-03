@@ -27,6 +27,7 @@
   }
 }
 *{box-sizing:border-box}
+input[type=checkbox]{accent-color:var(--pine);width:18px;height:18px}
 html,body{margin:0;height:100%}
 body{
   font-family:"Pretendard",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
@@ -154,6 +155,52 @@ dialog::backdrop{background:rgba(10,20,16,.45)}
 .vstat{margin-top:10px;font-weight:700;font-size:13.5px}
 .vstat.ok{color:var(--check)} .vstat.new{color:var(--pine)} .vstat.na{color:var(--sub)}
 
+/* 월간 성취 */
+.card{background:var(--surface);border-radius:16px;padding:14px 14px 12px;margin-bottom:12px}
+.ct{font-weight:800;font-size:14.5px;margin-bottom:10px}
+.ct small{font-weight:500;color:var(--sub);font-size:11.5px;margin-left:6px}
+.goal span{display:block;font-size:13px;font-weight:700;color:var(--pine);margin-top:8px}
+.gbar{position:relative;height:12px;border-radius:6px;background:var(--muted)}
+.gbar i{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:linear-gradient(90deg,var(--pine),color-mix(in srgb,var(--pine) 60%,var(--check)))}
+.gbar b{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink);opacity:.5;border-radius:1px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.kpis div{background:var(--bg);border-radius:12px;padding:10px 6px;text-align:center}
+.kpis b{display:block;font-size:20px;font-weight:800;color:var(--ink)}
+.kpis b small{font-size:12px;margin-left:1px}
+.kpis span{font-size:11.5px;color:var(--sub)}
+.mgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+.mhead{text-align:center;font-size:11.5px;font-weight:700;color:var(--sub);padding-bottom:2px}
+.mhead.we{color:var(--ex)}
+.mday{aspect-ratio:1;border-radius:10px;border:0;padding:0;background:var(--muted);display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:var(--ink);line-height:1.1}
+.mday small{font-size:9px;font-weight:600;opacity:.75}
+.mday.lv1{background:color-mix(in srgb,var(--pine) 18%,var(--surface))}
+.mday.lv2{background:color-mix(in srgb,var(--pine) 40%,var(--surface))}
+.mday.lv3{background:color-mix(in srgb,var(--pine) 70%,var(--surface));color:#fff}
+.mday.lv4{background:var(--pine);color:#fff}
+.mday.none{background:var(--bg);color:var(--sub)}
+.mday.future{background:transparent;color:var(--sub);border:1px dashed var(--line);font-weight:600}
+.mday.today{box-shadow:0 0 0 2px var(--surface),0 0 0 4px var(--check)}
+.legend{display:flex;align-items:center;justify-content:flex-end;gap:4px;margin-top:10px;font-size:11px;color:var(--sub)}
+.legend i{width:14px;height:14px;border-radius:4px;display:inline-block;background:var(--muted)}
+.legend i.lv1{background:color-mix(in srgb,var(--pine) 18%,var(--surface))}.legend i.lv2{background:color-mix(in srgb,var(--pine) 40%,var(--surface))}
+.legend i.lv3{background:color-mix(in srgb,var(--pine) 70%,var(--surface))}.legend i.lv4{background:var(--pine)}
+.wplot{position:relative;display:flex;gap:10px;align-items:flex-end;height:130px;border-bottom:1px solid var(--line);padding:0 4px}
+.wplot .gl{position:absolute;left:0;right:0;bottom:70%;border-top:1.5px dashed color-mix(in srgb,var(--pine) 50%,var(--line));height:0}
+.wplot .gl span{position:absolute;right:0;top:-17px;font-size:10px;color:var(--pine);font-weight:700}
+.wb{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;position:relative}
+.wb em{font-style:normal;font-size:11.5px;font-weight:800;margin-bottom:3px}
+.wb i{display:block;width:62%;max-width:38px;border-radius:8px 8px 2px 2px;background:color-mix(in srgb,var(--pine) 40%,var(--surface));min-height:3px}
+.wb i.ok{background:var(--pine)}
+.wlab{display:flex;gap:10px;padding:5px 4px 0}
+.wlab small{flex:1;text-align:center;font-size:10.5px;color:var(--sub)}
+.hb{display:grid;grid-template-columns:92px 1fr 44px;align-items:center;gap:8px;margin:8px 0;font-size:13px}
+.hb span{font-weight:600;line-height:1.25}
+.hb b{text-align:right;font-variant-numeric:tabular-nums;font-size:12.5px}
+.hbar{height:10px;border-radius:5px;background:var(--muted);overflow:hidden}
+.hbar i{display:block;height:100%;border-radius:5px}
+.item2 span i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;vertical-align:1px}
+.item2{grid-template-columns:118px 1fr 40px}
+
 /* ---------- 테마 색 ---------- */
 :root{ --check: var(--pine); }
 :root[data-theme="lilac"]{ --bg:#F6F4FA; --pine:#7B5BE6; --pine-soft:#EEE8FD; --today:#F5F1FE; --muted:#F0EDF5; --line:#E2DDEB; --check:#18A985; }
@@ -193,6 +240,7 @@ dialog::backdrop{background:rgba(10,20,16,.45)}
 <div class="wrap" id="app"></div>
 <nav class="nav" id="nav">
   <button data-view="week">주간 체크</button>
+  <button data-view="month">월간 성취</button>
   <button data-view="items">항목 관리</button>
 </nav>
 <dialog id="dlg"><div class="dlg" id="dlgBody"></div></dialog>
@@ -200,7 +248,7 @@ dialog::backdrop{background:rgba(10,20,16,.45)}
 
 <script>
 // 앱 버전: 파일을 고칠 때마다 이 값을 고친 날짜·시각으로 바꿔 주세요 (예: '2026.12.01 09:30')
-const APP_VERSION = '2026.11.03 15:25';
+const APP_VERSION = '2026.11.03 17:16';
 const KEY = 'routinePlan.v1';
 const DAYS = ['월','화','수','목','금','토','일'];
 const CATS = { ex:'운동', st:'학습', mi:'마음·회복', ea:'일상·이동' };
@@ -324,6 +372,7 @@ function active(item, d){
   if (item.to && m > item.to) return false;
   return item.times[dIdx(d)] != null;
 }
+const TIME_WORDS = ['아침','오전','낮','점심','오후','저녁','밤','자기 전'];
 const WORDS = [['자기 전',1380],['밤',1320],['저녁',1260],['오후',900],['점심',720],['낮',720],['오전',540],['아침',360]];
 function sortKey(t){
   if (!t) return 9999;
@@ -452,6 +501,83 @@ function renderWeek(){
   return h;
 }
 
+/* ---------- 월간 성취 ---------- */
+let monthStart = new Date(today.getFullYear(), today.getMonth(), 1);
+const GOAL = 0.7;
+function monthStats(ms){
+  const days = [], last = new Date(ms.getFullYear(), ms.getMonth()+1, 0).getDate();
+  const cat = {}, items = new Map();
+  let done = 0, total = 0;
+  for (let n = 1; n <= last; n++){
+    const d = new Date(ms.getFullYear(), ms.getMonth(), n);
+    if (d > today) { days.push({ d, future:true }); continue; }
+    const es = entriesFor(d, true); let a = 0;
+    es.forEach(e => {
+      const ok = isDone(d, e.key); if (ok) a++;
+      const c = cat[e.cat] = cat[e.cat] || [0,0]; c[1]++; if (ok) c[0]++;
+      const g = items.get(e.name) || { name:e.name, cat:e.cat, done:0, total:0 }; g.total++; if (ok) g.done++; items.set(e.name, g);
+    });
+    done += a; total += es.length;
+    days.push({ d, a, b: es.length });
+  }
+  return { days, cat, items:[...items.values()], done, total };
+}
+function lvl(a,b){ if (!b) return 'none'; const p=a/b; return p===0?'lv0':p<0.4?'lv1':p<GOAL?'lv2':p<1?'lv3':'lv4'; }
+function renderMonth(){
+  const ms = monthStart, st = monthStats(ms);
+  const isThis = ms.getFullYear()===today.getFullYear() && ms.getMonth()===today.getMonth();
+  const past = st.days.filter(x => !x.future && x.b);
+  const goodDays = past.filter(x => x.a/x.b >= GOAL).length;
+  let streak = 0; for (let i = past.length-1; i >= 0; i--){ const x = past[i];
+    if (x.a/x.b >= GOAL) streak++; else if (sameDay(x.d,today)) continue; else break; }
+  const best = past.reduce((m,x)=> (!m || x.a/x.b > m.a/m.b) ? x : m, null);
+  const p = pct(st.done, st.total);
+
+  let h = `<header class="hd"><div><h1>월간 성취</h1><p>목표 70% · 지난 날까지 기준이에요</p></div>
+    <div class="score"><b>${p}%</b><span>${st.done} / ${st.total} 완료</span></div></header>
+  <div class="wnav"><button class="ib" data-act="mo" data-n="-1" aria-label="지난달">‹</button>
+    <div class="mid"><b>${ms.getFullYear()}년 ${ms.getMonth()+1}월</b>${isThis?'':'<br><button data-act="thismonth">이번 달로</button>'}</div>
+    <button class="ib" data-act="mo" data-n="1" aria-label="다음 달">›</button></div>
+
+  <div class="card"><div class="goal"><div class="gbar"><i style="width:${p}%"></i><b style="left:70%"></b></div>
+    <span>${p >= 70 ? '이번 달 목표를 넘었어요 👏' : st.total ? `목표까지 ${70-p}%p 남았어요` : '아직 기록이 없어요'}</span></div>
+    <div class="kpis">
+      <div><b>${goodDays}<small>일</small></b><span>70% 넘은 날</span></div>
+      <div><b>${streak}<small>일</small></b><span>연속 달성</span></div>
+      <div><b>${best ? `${best.d.getMonth()+1}/${best.d.getDate()}` : '–'}</b><span>최고의 날${best ? ` ${pct(best.a,best.b)}%` : ''}</span></div>
+    </div></div>
+
+  <div class="card"><div class="ct">날짜별 달성률 <small>날짜를 누르면 그날 일정을 볼 수 있어요</small></div>
+    <div class="mgrid">${DAYS.map((d,i)=>`<div class="mhead ${i>4?'we':''}">${d}</div>`).join('')}`;
+  const lead = dIdx(ms); for (let i=0;i<lead;i++) h += `<div></div>`;
+  st.days.forEach(x => {
+    const today_ = sameDay(x.d,today) ? 'today' : '';
+    if (x.future) h += `<div class="mday future ${today_}">${x.d.getDate()}</div>`;
+    else h += `<button class="mday ${lvl(x.a,x.b)} ${today_}" data-act="day" data-d="${ymd(x.d)}" aria-label="${fmtDate(x.d)} ${x.b?pct(x.a,x.b)+'%':''}">${x.d.getDate()}${x.b?`<small>${pct(x.a,x.b)}</small>`:''}</button>`;
+  });
+  h += `</div><div class="legend"><span>0%</span><i class="lv0"></i><i class="lv1"></i><i class="lv2"></i><i class="lv3"></i><i class="lv4"></i><span>100%</span></div></div>`;
+
+  // 주별 추이
+  const weeks = []; let w = mondayOf(ms);
+  while (w <= new Date(ms.getFullYear(), ms.getMonth()+1, 0)){
+    let a=0,b=0; for (let i=0;i<7;i++){ const d=addDays(w,i); if (d.getMonth()!==ms.getMonth() || d>today) continue; const [x,y]=counts(d); a+=x; b+=y; }
+    weeks.push({ w, a, b }); w = addDays(w,7);
+  }
+  h += `<div class="card"><div class="ct">주별 추이 <small>점선은 목표 70%</small></div>
+    <div class="wplot"><b class="gl"></b>${weeks.map(x=>`<div class="wb"><em>${x.b?pct(x.a,x.b)+'%':''}</em><i style="height:${x.b?pct(x.a,x.b):0}%" class="${x.b && x.a/x.b>=GOAL?'ok':''}"></i></div>`).join('')}</div>
+    <div class="wlab">${weeks.map(x=>`<small>${x.w.getMonth()+1}/${x.w.getDate()}주</small>`).join('')}</div></div>`;
+
+  // 종류별
+  const cats = Object.entries(st.cat).filter(([k,v])=>v[1]);
+  if (cats.length) h += `<div class="card"><div class="ct">종류별</div>${cats.map(([k,v])=>`<div class="hb"><span>${CATS[k]||k}</span><div class="hbar"><i style="width:${pct(v[0],v[1])}%;background:var(--${k})"></i></div><b>${pct(v[0],v[1])}%</b></div>`).join('')}</div>`;
+
+  // 항목별
+  const its = st.items.sort((a,b)=> b.done/b.total - a.done/a.total || b.done - a.done);
+  if (its.length) h += `<div class="card"><div class="ct">항목별 <small>한 횟수 / 계획한 횟수</small></div>${its.map(g=>`<div class="hb item2"><span><i style="background:var(--${g.cat})"></i>${esc(g.name)}</span><div class="hbar"><i style="width:${pct(g.done,g.total)}%;background:var(--${g.cat})"></i></div><b>${g.done}/${g.total}</b></div>`).join('')}</div>`;
+
+  return h + `<p class="ver">버전 ${APP_VERSION}</p>`;
+}
+
 /* ---------- 항목 관리 ---------- */
 function summary(it){
   const ds = it.times.map((t,i)=>t!=null?DAYS[i]:null).filter(Boolean);
@@ -490,7 +616,7 @@ function renderItems(){
 }
 
 function render(){
-  document.getElementById('app').innerHTML = view==='week' ? renderWeek() : renderItems();
+  document.getElementById('app').innerHTML = view==='week' ? renderWeek() : view==='month' ? renderMonth() : renderItems();
   const list = document.getElementById('itemList');
   if (list) { enableDrag(list); checkVersion(); }
   document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on', b.dataset.view===view));
@@ -736,15 +862,35 @@ function openEdit(id){
     <label class="sw"><input type="checkbox" id="e_track" ${it.track?'checked':''}> 주간 체크에 넣기</label>
     <div class="two"><label class="f"><span>시작 월 (선택)</span><input type="month" id="e_from" value="${esc(it.from)}"></label>
       <label class="f"><span>종료 월 (선택)</span><input type="month" id="e_to" value="${esc(it.to)}"></label></div>
-    <div class="f"><span>요일과 시간</span>
-    <p class="hint">“18:30–19:20”처럼 시각을 쓰면 시간순으로 정렬되고 체크칸 아래에 표시돼요. “낮”, “오후”, “저녁”, “자기 전”도 쓸 수 있어요.</p>
+    <div class="f"><span>요일</span>
+    <div class="chips" style="margin-bottom:10px">
+      <button class="mini chip" data-days="all">매일</button><button class="mini chip" data-days="wd">평일</button>
+      <button class="mini chip" data-days="we">주말</button><button class="mini chip" data-days="none">모두 해제</button></div>
+    <span>시간 한 번에 넣기</span>
+    <div class="chips" style="margin-bottom:6px">${TIME_WORDS.map(w=>`<button class="mini chip" data-tw="${w}">${w}</button>`).join('')}</div>
+    <div class="dayrow" style="margin-bottom:6px"><input type="text" id="e_all" list="timeWords" placeholder="예: 19:00 또는 18:30–19:20"><button class="mini" id="e_apply" style="height:38px;white-space:nowrap">선택한 요일에 넣기</button></div>
+    <datalist id="timeWords">${TIME_WORDS.map(w=>`<option value="${w}">`).join('')}</datalist>
+    <p class="hint">위에서 고르거나 입력한 시간이 선택한 요일 모두에 들어가요. 요일마다 다르게 하려면 아래 칸을 직접 고치세요. “18:30–19:20”처럼 시각을 쓰면 시간순으로 정렬되고 체크칸 아래에 표시돼요.</p>
+    <span>요일별 시간</span>
     <div class="days">${DAYS.map((d,i)=>`<div class="dayrow"><label><input type="checkbox" data-dc="${i}" ${it.times[i]!=null?'checked':''}> ${d}</label>
-      <input type="text" data-dt="${i}" value="${esc(it.times[i]??'')}" placeholder="시간" ${it.times[i]==null?'disabled':''}></div>`).join('')}</div></div>
+      <input type="text" data-dt="${i}" list="timeWords" value="${esc(it.times[i]??'')}" placeholder="시간" ${it.times[i]==null?'disabled':''}></div>`).join('')}</div></div>
     <div class="btns" style="margin-top:16px"><button class="btn" id="e_save">저장</button>
     <button class="btn ghost" id="e_cancel">취소</button>
     ${isNew?'':'<button class="btn danger" id="e_del">항목 삭제</button>'}</div>`;
   const $ = s => body.querySelector(s);
-  body.querySelectorAll('[data-dc]').forEach(c=>c.onchange=()=>{ const t=body.querySelector(`[data-dt="${c.dataset.dc}"]`); t.disabled=!c.checked; if(c.checked) t.focus(); });
+  const dc = i => body.querySelector(`[data-dc="${i}"]`), dt = i => body.querySelector(`[data-dt="${i}"]`);
+  const setDay = (i, on) => { dc(i).checked = on; dt(i).disabled = !on; if (on && !dt(i).value) dt(i).value = $('#e_all').value.trim(); };
+  body.querySelectorAll('[data-dc]').forEach(c=>c.onchange=()=>{ const i=+c.dataset.dc; setDay(i, c.checked); if (c.checked && !dt(i).value) dt(i).focus(); });
+  body.querySelectorAll('[data-days]').forEach(b=>b.onclick=()=>{
+    const k=b.dataset.days; DAYS.forEach((_,i)=> setDay(i, k==='all' || (k==='wd' && i<5) || (k==='we' && i>4)));
+  });
+  const applyAll = () => {
+    const v = $('#e_all').value.trim(); if (!v) { toast('넣을 시간을 고르거나 입력해 주세요'); return; }
+    let n = 0; DAYS.forEach((_,i)=>{ if (dc(i).checked) { dt(i).value = v; n++; } });
+    toast(n ? `${n}개 요일에 “${v}”을(를) 넣었어요` : '먼저 요일을 선택해 주세요');
+  };
+  body.querySelectorAll('[data-tw]').forEach(b=>b.onclick=()=>{ $('#e_all').value = b.dataset.tw; applyAll(); });
+  $('#e_apply').onclick = applyAll;
   $('#e_cancel').onclick = ()=>dlg.close();
   $('#e_save').onclick = ()=>{
     const name = $('#e_name').value.trim();
@@ -783,6 +929,8 @@ document.getElementById('app').addEventListener('click', e=>{
   else if (a==='cell') openCell(b.dataset.id, parseYmd(b.dataset.d));
   else if (a==='wk'){ weekStart = addDays(weekStart, 7*(+b.dataset.n)); render(); }
   else if (a==='thisweek'){ weekStart = mondayOf(today); render(); }
+  else if (a==='mo'){ monthStart = new Date(monthStart.getFullYear(), monthStart.getMonth()+(+b.dataset.n), 1); render(); }
+  else if (a==='thismonth'){ monthStart = new Date(today.getFullYear(), today.getMonth(), 1); render(); }
   else if (a==='install'){ installEvt.prompt(); installEvt.userChoice.finally(()=>{ installEvt=null; render(); }); }
   else if (a==='theme'){ S.theme = b.dataset.k; save(); applyTheme(); render(); toast(`${THEMES[S.theme].name} 테마로 바꿨어요`); }
   else if (a==='vcheck') checkVersion();
