@@ -1,5 +1,5 @@
 // 나의 루틴: 오프라인에서도 열리도록 파일을 저장해 두는 서비스 워커
-const CACHE = 'routine-v3';
+const CACHE = 'routine-v4';
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-512.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
@@ -11,6 +11,8 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
+  // 버전 확인 요청은 항상 서버에서 직접 받기
+  if (new URL(req.url).searchParams.has('nocache')) return;
   // 화면: 사이트가 열려 있으면 최신 버전, 닫혀 있거나(404) 인터넷이 없으면 저장해 둔 버전
   if (req.mode === 'navigate') {
     e.respondWith((async () => {
