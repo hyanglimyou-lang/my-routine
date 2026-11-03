@@ -1,5 +1,5 @@
 // 나의 루틴: 오프라인에서도 열리도록 파일을 저장해 두는 서비스 워커
-const CACHE = 'routine-v1';
+const CACHE = 'routine-v2';
 const FILES = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-512.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
